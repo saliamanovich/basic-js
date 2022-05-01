@@ -12,40 +12,41 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  /*console.log(date);
-  console.log(date.toString());
-  console.log(Date.parse(date));
-  /*console.log(date.toISOString());*/
-  /*console.log(date && date.getMonth && date.getMonth.call);
-  console.log(Object.prototype.toString.call(date)==='[object Date]');
-  console.log(typeof(date));
-  console.log(date instanceof Date);
-  console.log(date.getSeconds());*/
+  
   if (arguments.length===0){
     console.log('null');
     return 'Unable to determine the time of year!';
   }
-  if (isNaN(Date.parse(date))){
+  /*if (isNaN(Date.parse(date))){
     console.log('invalid date!') 
-    return "Invalid date!";
+    throw new Error("Invalid date!");
   }
   
   else if (Object.prototype.toString.call(date) !== '[object Date]'){
     console.log(Object.prototype.toString.call(date) === '[object Date]');
-    return "Invalid date!";
+    throw new Error("Invalid date!") ;
   }
   else if (!date instanceof Date){
-    return "Invalid date!";
+    throw new Error("Invalid date!");
   }
 
-  /*else if (!date.getSeconds()){
-    return 'Invalid date!';
-  }*/
-  /*else if (typeof(date)!==Date){
-    return 'Invalid date!';
-  }*/
-  else {
-  let month = date.getMonth();
+  else {*/
+  
+    if (isNaN(Date.parse(date))){
+      console.log('invalid date!') 
+      throw new Error("Invalid date!");
+    }
+   
+    
+    /*else if (Object.prototype.toString.call(date) !== '[object Date]'){
+      console.log(Object.prototype.toString.call(date) === '[object Date]');
+      throw new Error("Invalid date!") ;
+    }*/
+    /*else if (!date instanceof Date){
+      throw new Error("Invalid date!");
+    }*/
+    else {
+      let month = date.getMonth();
   switch (month){
     case 0:
     case 1:
@@ -73,19 +74,19 @@ function getSeason(date) {
       break;
     default:
       console.log('Unable to determine the time of year');
-      return "Invalid date!";
+      throw new Error("Invalid date!");
   }
-  }
+    }
+   
+  //}
+  
+  
+  
  
   throw new NotImplementedError('Not implemented');
+  }
   
-  
-}
-getSeason('foo'),
-getSeason({ John: 'Smith' }),
-getSeason(20192701),
-getSeason([2019, '27', 0 + '1']),
-getSeason(() => new Date())
+//}
 
 module.exports = {
   getSeason
