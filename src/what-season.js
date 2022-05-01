@@ -77,10 +77,9 @@ function getSeason(date) {
   }
   }
  
-  //return date;
   throw new NotImplementedError('Not implemented');
   
-  // remove line with error and write your code here
+  
 }
 getSeason('foo'),
 getSeason({ John: 'Smith' }),
